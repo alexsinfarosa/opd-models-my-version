@@ -1,0 +1,37 @@
+{
+  "pestName": "Monarthropalpus flavus",
+  "biofixPhenology": "First Trap Catch",
+  "baseTemp": 50,
+  "preBiofix": [
+    {
+      "stage": "adults",
+      "ddlo": 350,
+      "ddhi": 660,
+      "phenologicalMarkers": "Weigela",
+      "status": "Adults emerge from mines",
+      "scouting": "Yellowish mines noticeable on underside of leaf",
+      "management": "Pesticide application",
+      "biologicalControl": "Use resistant varieties. Few parasites"
+    },
+    {
+      "stage": "eggs",
+      "ddlo": 350,
+      "ddhi": 750,
+      "phenologicalMarkers": "Shoot elongation of boxwood",
+      "status": "",
+      "scouting": "Hold leaves up to light to see eggs",
+      "management": "Prune severely infested foliage",
+      "biologicalControl": ""
+    },
+    {
+      "stage": "larvae",
+      "ddlo": 1000,
+      "ddhi": 2400,
+      "phenologicalMarkers": "Leaf maturation of boxwood",
+      "status": "Larvae creating new mines",
+      "scouting": "Scout for new mines on underside of leaf",
+      "management": "Foliar pesticide application",
+      "biologicalControl": ""
+    }
+  ]
+}

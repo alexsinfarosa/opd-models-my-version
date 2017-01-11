@@ -1,0 +1,37 @@
+{
+  "pestName": "Oligonychus Ununguis",
+  "biofixPhenology": "First Trap Catch",
+  "baseTemp": 50,
+  "preBiofix": [
+    {
+      "stage": "egg",
+      "ddlo": 7,
+      "ddhi": 121,
+      "phenologicalMarkers": "Pussy willow blooming",
+      "status": "Overwintering eggs hatch",
+      "scouting": "Stippled older needles from previous year's population",
+      "management": "Dormant oil spray",
+      "biologicalControl": ""
+    },
+    {
+      "stage": "nymph/adult",
+      "ddlo": 192,
+      "ddhi": 363,
+      "phenologicalMarkers": "Redbud blooming",
+      "status": "Nymphs and adults active",
+      "scouting": "Tap branches over white paper. If more than 10 mites/tap, apply pesticides",
+      "management": "Spring pesticide treatment. Mites most active in cooler temperatures - 60's-70's F",
+      "biologicalControl": "Predaceous mites - may be killed if using pesticides, lady bugs, dusty wings"
+    },
+    {
+      "stage": "nymph/adult",
+      "ddlo": 2375,
+      "ddhi": 2806,
+      "phenologicalMarkers": "Witch hazel blooming",
+      "status": "Nymphs and adults active",
+      "scouting": "Tap branches over white paper. If more than 10 mites/tap, apply pesticides",
+      "management": "Fall pesticide treatment. Mites most active in cooler temperatures - 60's-70's F. Dormant oil sprays",
+      "biologicalControl": "Predaceous mites - may be killed if using pesticides, ladybugs, dusty wings"
+    }
+  ]
+}

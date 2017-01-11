@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { browserHistory } from 'react-router';
+
+import Routes from './routes';
+
 import 'bulma/css/bulma.css';
 import './index.css';
 
 ReactDOM.render(
-  <App />,
+  <Routes history={browserHistory} />,
   document.getElementById('root')
 );

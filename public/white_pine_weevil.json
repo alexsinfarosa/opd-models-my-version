@@ -1,0 +1,27 @@
+{
+  "pestName": "Pissodes strobi",
+  "biofixPhenology": "First Trap Catch",
+  "baseTemp": 50,
+  "preBiofix": [
+    {
+      "stage": "Overwintering adults become active",
+      "ddlo": 7,
+      "ddhi": 58,
+      "phenologicalMarkers": "Silver maple blooming",
+      "status": "Adults active",
+      "scouting": "Scout for feeding wounds on leaders, sap dripping",
+      "management": "Begin trapping. Pesticide applications when day temperatures reach 50F",
+      "biologicalControl": ""
+    },
+    {
+      "stage": "Larvae mature",
+      "ddlo": 0,
+      "ddhi": 400,
+      "phenologicalMarkers": "Before  mockorange or mountain laurel bloom",
+      "status": "Larvae maturing",
+      "scouting": "Drooping leaders - 'shepherd's crook'",
+      "management": "Prune out and destroy drooping leaders. Cut below bark discoloration",
+      "biologicalControl": ""
+    }
+  ]
+}
