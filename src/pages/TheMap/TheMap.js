@@ -26,6 +26,10 @@ export default class TheMap extends Component {
     return (
       <div style={{width: '100%', height: 560}}>
        <GoogleMapReact
+         bootstrapURLKeys={{
+          key: 'AIzaSyAftetOMxP8ksyB5AW_CLWvDZG7nKmcIrI',
+          language: 'en'
+        }}
         onChange={this.onChange}
         center={this.state.center}
         zoom={this.state.zoom}>
