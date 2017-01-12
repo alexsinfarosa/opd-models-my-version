@@ -22,6 +22,7 @@ class AccumulationEndDate extends Component {
   render() {
     return (
       <div>
+        <label className="label">Accumulation End Date:</label>
         <DayPicker
           onDayClick={ this.handleDayClick }
           selectedDays={ this.isDaySelected }

@@ -1,19 +1,37 @@
 import React, { Component } from 'react';
+// import shouldPureComponentUpdate from 'react-pure-render/function';
 
-class TheMap extends Component {
+import GoogleMapReact from 'google-map-react';
+// import MyGreatPlace from './my_great_place.jsx';
+
+export default class TheMap extends Component {
   constructor(props) {
     super(props);
+    this.onChange = this.onChange.bind(this);
 
-    this.state = {}
+    this.state = {
+      center: [42.9543, -75.5262],
+      zoom: 5,
+    }
   }
 
-  render () {
+  onChange = ({center, zoom}) => {
+    this.setState({
+      center: center,
+      zoom: zoom,
+    });
+  }
+
+  render() {
     return (
-      <div>
-        <h1 className="subtitle is-5">Select a state from the menu to the left.</h1>
+      <div style={{width: '100%', height: 560}}>
+       <GoogleMapReact
+        onChange={this.onChange}
+        center={this.state.center}
+        zoom={this.state.zoom}>
+        {/* <div className="place" lat={60.955413} lng={30.337844}>MyPlace</div> */}
+      </GoogleMapReact>
       </div>
-    )
+    );
   }
 }
-
-export default TheMap

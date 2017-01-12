@@ -6,6 +6,8 @@ import TheMap from './pages/TheMap/TheMap';
 import Results from './pages/Results/Results';
 import MoreInfo from './pages/MoreInfo/MoreInfo';
 
+// const repo = `/${window.location.pathname.split('/')[1]}`; // basename={repo}
+
 const Routes = (props) => (
   <Router {...props}>
     <Route path="/" component={App}>
