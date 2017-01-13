@@ -17,7 +17,6 @@ class PestSelector extends Component {
   }
 
   render () {
-    console.log(this.state.selectedPest);
     return (
       <div>
         <label className="label">Select a Pest:</label>

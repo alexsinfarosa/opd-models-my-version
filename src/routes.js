@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route } from 'react-router';
+import { BrowserRouter, Match } from 'react-router'
 
 import App from './App';
 import TheMap from './pages/TheMap/TheMap';
@@ -9,13 +9,14 @@ import MoreInfo from './pages/MoreInfo/MoreInfo';
 // const repo = `/${window.location.pathname.split('/')[1]}`; // basename={repo}
 
 const Routes = (props) => (
-  <Router {...props}>
-    <Route path="/" component={App}>
-      <Route path="/map" component={TheMap}/>
-      <Route path="/results" component={Results}/>
-      <Route path="/moreinfo" component={MoreInfo}/>
-    </Route>
-  </Router>
+  <BrowserRouter {...props}>
+    <div>
+      <Match exaclty pattern="/" component={App} />
+      <Match exaclty pattern="/map" component={TheMap} />
+      <Match pattern="/results" component={Results} />
+      <Match pattern="/moreinfo" component={MoreInfo} />
+    </div>
+  </BrowserRouter>
 );
 
 export default Routes;

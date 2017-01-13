@@ -16,7 +16,6 @@ class StateSelector extends Component {
   }
 
   render () {
-    console.log(this.state.selectedState);
     return (
       <div>
         <label className="label">Select a State:</label>
