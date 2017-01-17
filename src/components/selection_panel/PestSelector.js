@@ -1,33 +1,26 @@
 import React, { Component } from 'react';
-import Data from '../../../public/data.json';
+import { inject, observer } from 'mobx-react';
 
+@inject('store') @observer
 class PestSelector extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
 
-    this.state = {
-      data: Data,
-      selectedPest: ''
-    }
-  }
-
-  handleChange(e) {
-    this.setState({selectedPest: e.target.value})
+  selectPest(e) {
+    this.props.store.selected.pest = e.target.value
   }
 
   render () {
+    const { data, selected } = this.props.store;
     return (
       <div>
         <label className="label">Select a Pest:</label>
         <div className="control">
           <span className="select">
             <select
-              value={this.state.selectedPest}
-              onChange={this.handleChange}
+              value={selected.pest}
+              onChange={this.selectPest.bind(this)}
             >
               <option>Select Pest</option>
-              {this.state.data.map((pest, i) =>
+              {data.map((pest, i) =>
                 <option key={i}>{pest.informalName}</option>)}
             </select>
           </span>

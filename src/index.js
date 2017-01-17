@@ -1,24 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Match, Miss } from 'react-router';
-import App from './App';
-import NotFound from './pages/NotFound/NotFound';
-import AppState from './store/AppState'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
 
-import 'bulma/css/bulma.css';
-import './index.css';
+import 'bulma/css/bulma.css'
+import App from './App'
+import NotFound from './pages/NotFound/NotFound'
+import { BrowserRouter, Match, Miss } from 'react-router'
 
-const appState = new AppState();
-
+import { Provider } from 'mobx-react'
+import store from './store'
 
 const Root = () => {
   return (
     <BrowserRouter>
       <div>
-        <Match exactly pattern="/" component={App} />
-        <Match exactly pattern="/map" component={App} />
-        <Match exactly pattern="/results" component={App} />
-        <Match exactly pattern="/moreinfo" component={App} />
+        <Match exactly pattern='/' component={App} />
+        <Match exactly pattern='/map' component={App} />
+        <Match exactly pattern='/results' component={App} />
+        <Match exactly pattern='/moreinfo' component={App} />
         <Miss component={NotFound} />
       </div>
     </BrowserRouter>
@@ -26,6 +25,8 @@ const Root = () => {
 }
 
 ReactDOM.render(
-  <Root store={appState}/>,
+  <Provider store={store}>
+    <Root />
+  </Provider>,
   document.getElementById('root')
-);
+)

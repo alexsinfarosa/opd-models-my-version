@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Match, Link } from 'react-router';
-import { observer } from 'mobx-react'
-
 
 import TheMap from './pages/TheMap/TheMap';
 import Results from './pages/Results/Results';
@@ -9,7 +7,6 @@ import MoreInfo from './pages/MoreInfo/MoreInfo';
 import SelectionPanel from './components/selection_panel/SelectionPanel'
 import './App.css'
 
-@observer
 class App extends Component {
   render () {
     return (

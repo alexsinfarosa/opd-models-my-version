@@ -1,32 +1,26 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 
+@inject('store') @observer
 class StateSelector extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
 
-    this.state = {
-      availableStates: ['Connecticut','Delaware','DC','Illinois','Iowa','Maine','Maryland','Massachusetts','Michigan','Minnesota','Missouri','Nebraska','New Hampshire','New Jersey','New York','North Carolina','Pennsylvania','Rhode Island','South Carolina','South Dakota','Vermont','Virginia','West Virginia','Wisconsin','Alabama','All States'],
-      selectedState: ''
-    }
-  }
-
-  handleChange(e) {
-    this.setState({selectedState: e.target.value})
+  selectState(e) {
+    this.props.store.selected.state = e.target.value
   }
 
   render () {
+    const { selected, states} = this.props.store;
     return (
       <div>
         <label className="label">Select a State:</label>
         <div className="control">
           <span className="select">
             <select
-              value={this.state.selectedState}
-              onChange={this.handleChange}
+              value={selected.state}
+              onChange={this.selectState.bind(this)}
             >
               <option>Select State</option>
-              {this.state.availableStates.map((state, i) => <option key={i}>{state}</option>)}
+              {states.map((state, i) => <option key={i}>{state}</option>)}
             </select>
           </span>
         </div>
