@@ -10,9 +10,12 @@ import { BrowserRouter, Match, Miss } from 'react-router'
 import { Provider } from 'mobx-react'
 import store from './store'
 
+const repo = `/${window.location.pathname.split('/')[1]}`; // basename={repo}
+console.log(`it is: ${repo}`);
+
 const Root = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={repo}>
       <div>
         <Match exactly pattern='/' component={App} />
         <Match exactly pattern='/map' component={App} />
