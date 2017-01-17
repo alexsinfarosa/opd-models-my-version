@@ -5,7 +5,7 @@ import { inject, observer } from 'mobx-react';
 class StateSelector extends Component {
 
   selectState(e) {
-    this.props.store.selected.state = e.target.value
+    this.props.store.selected.state.name = e.target.value
   }
 
   render () {
@@ -16,7 +16,7 @@ class StateSelector extends Component {
         <div className="control">
           <span className="select">
             <select
-              value={selected.state}
+              value={selected.state.name}
               onChange={this.selectState.bind(this)}
             >
               <option>Select State</option>

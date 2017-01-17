@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import DayPicker, { DateUtils } from 'react-day-picker';
 import './AccumulationEndDate.css'
+import { action } from 'mobx';
 import { inject, observer } from 'mobx-react';
 
 @inject('store') @observer
 class AccumulationEndDate extends Component {
   // Check if the day in state is selected
-  isDaySelected(day) {
+  @action isDaySelected(day) {
     return DateUtils.isSameDay(day, this.props.store.selected.day);
   }
-  handleDayClick(e, day) {
+  @action handleDayClick(e, day) {
     // this.setState({ selectedDay: day });
     this.props.store.selected.day = day
   }

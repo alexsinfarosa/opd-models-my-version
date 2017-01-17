@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { action } from 'mobx';
 import { inject, observer } from 'mobx-react';
 
 @inject('store') @observer
 class PestSelector extends Component {
 
-  selectPest(e) {
+  @action selectPest(e) {
     this.props.store.selected.pest = e.target.value
   }
 
