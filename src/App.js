@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Match, Link } from 'react-router';
 
 import TheMap from './pages/TheMap/TheMap';
@@ -7,8 +7,7 @@ import MoreInfo from './pages/MoreInfo/MoreInfo';
 import SelectionPanel from './components/selection_panel/SelectionPanel'
 import './App.css'
 
-class App extends Component {
-  render () {
+const App = ({pathname}) => {
     return (
       <section className="hero is-fullheight">
         <div className="hero-body">
@@ -34,15 +33,15 @@ class App extends Component {
                 <div className="tile is-child box">
                   <div className="tabs">
                     <ul>
-                      <li><Link to="/map">Map</Link></li>
-                      <li><Link to="/results">Results</Link></li>
-                      <li><Link to="/moreinfo">More Info</Link></li>
+                      <li><Link to='/map'>Map</Link></li>
+                      <li><Link to='/results'>Results</Link></li>
+                      <li><Link to='/moreinfo'>More Info</Link></li>
                     </ul>
                   </div>
                   <div className="tile is-child">
-                    <Match pattern="/map" component={TheMap} />
-                    <Match pattern="/results" component={Results} />
-                    <Match pattern="/moreinfo" component={MoreInfo} />
+                    <Match pattern='/map' component={TheMap} />
+                    <Match pattern='/results' component={Results} />
+                    <Match pattern='/moreinfo' component={MoreInfo} />
                   </div>
                 </div>
               </div>
@@ -54,6 +53,5 @@ class App extends Component {
       </section>
     )
   }
-}
 
 export default App

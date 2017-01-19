@@ -1,4 +1,4 @@
-import { observable } from 'mobx'
+import { observable, action } from 'mobx'
 import Data from '../../public/data.json'
 
 class store {
@@ -48,6 +48,14 @@ class store {
   		{postalCode: 'AL', lat: 32.6174, lon: -86.6795, zoom: 7, name: 'Alabama'},
   		{postalCode: 'ALL',lat: 42.5000, lon: -75.7000, zoom: 6, name: 'All States'},
   	];
+
+    @observable stations = []
+
+    @observable filteredStations = []
+
+    @action filterStations = (postalCode) => {
+      this.filteredStations = this.stations.filter(state => state.state === postalCode)
+    }
 }
 
 export default new store();

@@ -5,7 +5,7 @@ import './index.css'
 import 'bulma/css/bulma.css'
 import App from './App'
 import NotFound from './pages/NotFound/NotFound'
-import { BrowserRouter, Match, Miss } from 'react-router'
+import { BrowserRouter as Router, Match, Miss } from 'react-router'
 
 import { Provider } from 'mobx-react'
 import store from './store'
@@ -15,7 +15,7 @@ import store from './store'
 
 const Root = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <div>
         <Match exactly pattern='/' component={App} />
         <Match exactly pattern='/map' component={App} />
@@ -23,7 +23,7 @@ const Root = () => {
         <Match exactly pattern='/moreinfo' component={App} />
         <Miss component={NotFound} />
       </div>
-    </BrowserRouter>
+    </Router>
   )
 }
 
