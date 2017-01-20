@@ -1,22 +1,26 @@
 import React, {PropTypes, Component} from 'react';
 // import shouldPureComponentUpdate from 'react-pure-render/function';
 
-import {greatPlaceStyle} from './Marker_Styles';
+// import { MarkerStyles } from './MarkerStyles';
 
 export default class MyGreatPlace extends Component {
   static propTypes = {
-    text: PropTypes.string
+    postalCode: PropTypes.string
   };
-
-  static defaultProps = {};
 
   // shouldComponentUpdate = shouldPureComponentUpdate;
 
+
   render() {
+
     return (
-       <div style={greatPlaceStyle}>
-          {this.props.text}
-       </div>
+      //  <div style={MarkerStyles}>
+      //     {this.props.text}
+      //  </div>
+       <img
+         src={this.props.src}
+         alt={this.props.name}
+       />
     );
   }
 }

@@ -5,7 +5,7 @@ import { inject, observer } from 'mobx-react';
 @inject('store') @observer
 class PestSelector extends Component {
 
-  @action selectPest(e) {
+  @action selectPest = (e) => {
     this.props.store.selected.pest = e.target.value
   }
 
@@ -18,7 +18,7 @@ class PestSelector extends Component {
           <span className="select">
             <select
               value={selected.pest}
-              onChange={this.selectPest.bind(this)}
+              onChange={this.selectPest}
             >
               <option>Select Pest</option>
               {data.map((pest, i) =>

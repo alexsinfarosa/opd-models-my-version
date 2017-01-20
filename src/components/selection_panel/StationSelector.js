@@ -13,13 +13,15 @@ class StationSelector extends Component {
 
     const filteredStationsList = filteredStations.map((station, i) => (
       <option key={i}>{station.name}</option>))
-      
+
     return (
       <div>
-        <label className="label">Select a Station: {filteredStations.length}</label>
+        <label className="label">Select a Station: <strong className="primary-color">{filteredStations.length}</strong></label>
         <div className="control">
           <span className="select">
-            <select>
+            <select
+              onMouseOver={false} // To implement
+              >
               <option>Select Station</option>
               {filteredStationsList}
             </select>

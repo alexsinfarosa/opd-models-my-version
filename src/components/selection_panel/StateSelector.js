@@ -8,7 +8,7 @@ class StateSelector extends Component {
   @action selectedState = (e) => {
     this.props.store.selected.state.name = e.target.value;
     const state = this.props.store.stateCenters.filter(state => state.name === this.props.store.selected.state.name)
-    this.props.store.filterStations(state[0].postalCode);
+    this.props.store.filterTheStates(state[0].postalCode);
   }
 
   render () {

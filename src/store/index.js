@@ -1,8 +1,8 @@
 import { observable, action } from 'mobx'
-import Data from '../../public/data.json'
+import pestData from '../../public/pestData.json'
 
 class store {
-  @observable data = Data
+  @observable data = pestData
 
   @observable selected = {
     pest: '',
@@ -53,8 +53,31 @@ class store {
 
     @observable filteredStations = []
 
-    @action filterStations = (postalCode) => {
-      this.filteredStations = this.stations.filter(state => state.state === postalCode)
+    // @action filterStations = (postalCode) => {
+    //   const state = this.stateCenters.filter(state => state.postalCode === postalCode)
+    //   this.selected.state.center = [state[0].lat, state[0].lon]
+    //   this.selected.state.zoom = state[0].zoom
+    //   this.filteredStations = this.stations.filter(obj => obj.state === postalCode)
+    // }
+
+    @action filterTheStates = (postalCode) => {
+      const tempArr = []
+      this.stations.forEach(station => {
+        if (station.network === "newa" || station.network === "njwx" || (station.network === "cu_log" && station.state !== "NY")) {
+          const newObj = station
+          newObj['icon'] = 'http://newa.nrcc.cornell.edu/gifs/newa_small.png'
+          tempArr.push(newObj)
+        } else if (station.network === "cu_log") {
+          const newObj = station
+          newObj['icon'] = 'http://newa.nrcc.cornell.edu/gifs/culog.png'
+          tempArr.push(newObj)
+        } else if (station.network === "icao") {
+          const newObj = station
+          newObj['icon'] = 'http://newa.nrcc.cornell.edu/gifs/airport.png'
+          tempArr.push(newObj)
+        }
+      })
+      this.filteredStations = tempArr
     }
 }
 
