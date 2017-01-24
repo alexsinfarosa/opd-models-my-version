@@ -11,6 +11,19 @@ export default class TheMap extends Component {
     // console.log(`Lat: ${center.lat}, Lon: ${center.lng}, Zoom: ${zoom}`)
   }
 
+  createMapOptions(maps) {
+    return {
+      zoomControlOptions: {
+        position: maps.ControlPosition.RIGHT_BUTTOM,
+        style: maps.ZoomControlStyle.SMALL
+      },
+      mapTypeControlOptions: {
+        position: maps.ControlPosition.TOP_RIGHT
+      },
+      mapTypeControl: true
+    }
+  }
+
   render() {
     const { selected, filteredStations } = this.props.store;
     const MarkerList = filteredStations.map( (station,i) => (
@@ -34,7 +47,8 @@ export default class TheMap extends Component {
           }}
           onChange={this.onChange}
           center={[selected.state.lat, selected.state.lon]}
-          zoom={selected.state.zoom}>
+          zoom={selected.state.zoom}
+          options={this.createMapOptions}>
 
           {MarkerList}
         </GoogleMapReact>
