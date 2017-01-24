@@ -5,24 +5,25 @@ import { inject, observer } from 'mobx-react';
 @inject('store') @observer
 class PestSelector extends Component {
 
-  @action selectPest = (e) => {
+  @action setPest = (e) => {
     this.props.store.selected.pest = e.target.value
   }
 
   render () {
-    const { data, selected } = this.props.store;
+    const { pestData } = this.props.store
     return (
       <div>
         <label className="label">Select a Pest:</label>
         <div className="control">
           <span className="select">
             <select
-              value={selected.pest}
-              onChange={this.selectPest}
+              value={this.pest}
+              onChange={this.setPest}
             >
               <option>Select Pest</option>
-              {data.map((pest, i) =>
-                <option key={i}>{pest.informalName}</option>)}
+              {pestData.map((pest,i) =>
+                <option key={i}>{pest.informalName}</option>
+              )}
             </select>
           </span>
         </div>

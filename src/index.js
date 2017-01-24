@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import 'bulma/css/bulma.css'
 import './index.css'
 
-import 'bulma/css/bulma.css'
 import App from './App'
 import NotFound from './pages/NotFound/NotFound'
 import { BrowserRouter as Router, Match, Miss } from 'react-router'

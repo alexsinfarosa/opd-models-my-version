@@ -1,57 +1,48 @@
-import React from 'react';
-import { Match, Link } from 'react-router';
-
-import TheMap from './pages/TheMap/TheMap';
-import Results from './pages/Results/Results';
-import MoreInfo from './pages/MoreInfo/MoreInfo';
-import SelectionPanel from './components/selection_panel/SelectionPanel'
+import React, { Component } from 'react'
 import './App.css'
+import { action } from 'mobx';
+import { inject, observer } from 'mobx-react';
+import axios from 'axios'
 
-const App = ({pathname}) => {
+import AppHeader from './components/AppHeader/AppHeader'
+import AppSelectionPanel from './components/AppSelectionPanel'
+import AppDisplayPanel from './components/AppDisplayPanel/AppDisplayPanel'
+
+@inject('store') @observer
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.fetchStations()
+  }
+
+  @action fetchStations = () => {
+    axios.get('http://newa.nrcc.cornell.edu/newaUtil/stateStationList/all')
+    .then(res => {
+      const stations = res.data.stations
+      console.log(stations[0])
+      this.props.store.stations = stations
+      return
+    })
+    .catch(err => {
+      console.log(err)
+      // console.log("Request Error: "+(err.response.data || err.response.statusText))
+      this.props.store.stations = []
+    })}
+
+  render () {
     return (
-      <section className="hero is-fullheight">
-        <div className="hero-body">
-          <div className="container">
-
-            <div className="columns">
-              <div className="column is-12">
-                <h1 className="title">
-                  <strong className="logo">NEWA</strong> Commercial Tree and Shrub Insect Models
-                </h1>
-              </div>
+      <section className='hero is-fullheight'>
+        <div className='hero-body'>
+          <div className='container'>
+            <AppHeader />
+            <div className='tile is-ancestor'>
+              <AppSelectionPanel />
+              <AppDisplayPanel />
             </div>
-
-            <div className="tile is-ancestor">
-
-              <div className="tile is-parent is-4">
-                <div className="tile is-child box">
-                  <SelectionPanel />
-                </div>
-              </div>
-
-              <div className="tile is-parent is-8">
-                <div className="tile is-child box">
-                  <div className="tabs">
-                    <ul>
-                      <li><Link to='/map'>Map</Link></li>
-                      <li><Link to='/results'>Results</Link></li>
-                      <li><Link to='/moreinfo'>More Info</Link></li>
-                    </ul>
-                  </div>
-                  <div className="tile is-child">
-                    <Match pattern='/map' component={TheMap} />
-                    <Match pattern='/results' component={Results} />
-                    <Match pattern='/moreinfo' component={MoreInfo} />
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
           </div>
         </div>
       </section>
     )
   }
-
-export default App
+}

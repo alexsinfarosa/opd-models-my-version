@@ -2,15 +2,18 @@ import { observable, action } from 'mobx'
 import pestData from '../../public/pestData.json'
 
 class store {
-  @observable data = pestData
+  @observable pestData = pestData
+  @observable stations = []
+  @observable filteredStations = []
 
   @observable selected = {
     pest: '',
     state: {
-      name: '',
-      center: [42.9543, -75.5262],
+      postalCode: '',
+      lat: 42.9543,
+      lon: -75.5262,
       zoom: 6,
-      greatPlaceCoords: {lat: 42.9543, lng: -75.5262}
+      name: '',
     },
     station: '',
     day: new Date(),
@@ -18,9 +21,37 @@ class store {
     endDate: ''
   }
 
-  @observable states = ['Connecticut','Delaware','DC','Illinois','Iowa','Maine','Maryland','Massachusetts','Michigan','Minnesota','Missouri','Nebraska','New Hampshire','New Jersey','New York','North Carolina','Pennsylvania','Rhode Island','South Carolina','South Dakota','Vermont','Virginia','West Virginia','Wisconsin','Alabama','All States']
+  @action addIconsToStations = () => {
+    const tempArr = []
+    const newa = 'http://newa.nrcc.cornell.edu/gifs/newa_small.png'
+    const newaGray = 'http://newa.nrcc.cornell.edu/gifs/newa_smallGray.png'
+    const airport = 'http://newa.nrcc.cornell.edu/gifs/airport.png'
+    const airportGray = 'http://newa.nrcc.cornell.edu/gifs/airportGray.png'
+    const culog = 'http://newa.nrcc.cornell.edu/gifs/culog.png'
+    const culogGray = 'http://newa.nrcc.cornell.edu/gifs/culogGray.png'
 
-  @observable stateCenters = [
+    this.stations.forEach(station => {
+      if (station.network === "newa" || station.network === "njwx" || (station.network === "cu_log" && station.state !== "NY")) {
+        const newObj = station
+        station.state === this.selected.state.postalCode || this.selected.state.postalCode === "ALL" ? newObj['icon'] = newa : newObj['icon'] = newaGray;
+        tempArr.push(newObj)
+      } else if (station.network === "cu_log") {
+        const newObj = station
+        station.state === this.selected.state.postalCode || this.selected.state.postalCode === "ALL" ? newObj['icon'] = culog : newObj['icon'] = culogGray
+        newObj['icon'] = culog
+        tempArr.push(newObj)
+      } else if (station.network === "icao") {
+        const newObj = station
+        station.state === this.selected.state.postalCode || this.selected.state.postalCode === "ALL" ? newObj['icon'] = airport : newObj['icon'] = airportGray
+        tempArr.push(newObj)
+      }
+    })
+  this.filteredStations = tempArr
+  // console.log(this.filteredStations[0])
+}
+
+  @observable states = [
+      {postalCode: 'AL', lat: 32.6174, lon: -86.6795, zoom: 7, name: 'Alabama'},
   		{postalCode: 'CT', lat: 41.6220, lon: -72.7272, zoom: 8, name: 'Connecticut'},
   		{postalCode: 'DE', lat: 38.9895, lon: -75.5051, zoom: 8, name: 'Delaware'},
   		{postalCode: 'DC', lat: 38.9101, lon: -77.0147, zoom: 8, name: 'DC'},
@@ -45,40 +76,8 @@ class store {
   		{postalCode: 'VA', lat: 37.5229, lon: -78.8531, zoom: 7, name: 'Virginia'},
   		{postalCode: 'WV', lat: 38.6409, lon: -80.6230, zoom: 7, name: 'West Virginia'},
   		{postalCode: 'WI', lat: 44.6243, lon: -89.9941, zoom: 6, name: 'Wisconsin'},
-  		{postalCode: 'AL', lat: 32.6174, lon: -86.6795, zoom: 7, name: 'Alabama'},
   		{postalCode: 'ALL',lat: 42.5000, lon: -75.7000, zoom: 6, name: 'All States'},
-  	];
+  	]
 
-    @observable stations = []
-
-    @observable filteredStations = []
-
-    // @action filterStations = (postalCode) => {
-    //   const state = this.stateCenters.filter(state => state.postalCode === postalCode)
-    //   this.selected.state.center = [state[0].lat, state[0].lon]
-    //   this.selected.state.zoom = state[0].zoom
-    //   this.filteredStations = this.stations.filter(obj => obj.state === postalCode)
-    // }
-
-    @action filterTheStates = (postalCode) => {
-      const tempArr = []
-      this.stations.forEach(station => {
-        if (station.network === "newa" || station.network === "njwx" || (station.network === "cu_log" && station.state !== "NY")) {
-          const newObj = station
-          newObj['icon'] = 'http://newa.nrcc.cornell.edu/gifs/newa_small.png'
-          tempArr.push(newObj)
-        } else if (station.network === "cu_log") {
-          const newObj = station
-          newObj['icon'] = 'http://newa.nrcc.cornell.edu/gifs/culog.png'
-          tempArr.push(newObj)
-        } else if (station.network === "icao") {
-          const newObj = station
-          newObj['icon'] = 'http://newa.nrcc.cornell.edu/gifs/airport.png'
-          tempArr.push(newObj)
-        }
-      })
-      this.filteredStations = tempArr
-    }
 }
-
 export default new store();

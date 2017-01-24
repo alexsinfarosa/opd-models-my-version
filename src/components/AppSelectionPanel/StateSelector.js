@@ -5,14 +5,15 @@ import { action } from 'mobx';
 @inject('store') @observer
 class StateSelector extends Component {
 
-  @action selectedState = (e) => {
-    this.props.store.selected.state.name = e.target.value;
-    const state = this.props.store.stateCenters.filter(state => state.name === this.props.store.selected.state.name)
-    this.props.store.filterTheStates(state[0].postalCode);
+  @action setState = (e) => {
+    const { states } = this.props.store
+    const selectedState = states.filter(state => state.name === e.target.value)[0]
+    this.props.store.selected.state = selectedState
+    this.props.store.addIconsToStations()
   }
 
   render () {
-    const { selected, states} = this.props.store;
+    const { states, selected } = this.props.store;
     return (
       <div>
         <label className="label">Select a State:</label>
@@ -20,10 +21,12 @@ class StateSelector extends Component {
           <span className="select">
             <select
               value={selected.state.name}
-              onChange={this.selectedState}
+              onChange={this.setState}
             >
               <option>Select State</option>
-              {states.map((state, i) => <option key={i}>{state}</option>)}
+              {states.map((state, i) =>
+                <option key={i}>{state.name}</option>
+              )}
             </select>
           </span>
         </div>
