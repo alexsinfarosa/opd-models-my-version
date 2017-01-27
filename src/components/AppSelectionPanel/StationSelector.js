@@ -24,7 +24,7 @@ export default class StationSelector extends Component {
           <span className="select">
             <select
               onChange={this.setStation}
-              value={selected.station}
+              value={selected.station.name}
               onMouseOver={false} // To implement
               >
               <option>Select Station</option>
