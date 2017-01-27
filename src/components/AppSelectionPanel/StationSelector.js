@@ -11,7 +11,8 @@ export default class StationSelector extends Component {
   }
 
   @action setStation = (e) => {
-    this.props.store.selected.station = e.target.value
+    const { selected, stations } = this.props.store
+    selected.station = stations.filter(station => station.state === selected.state.postalCode)[0]
   }
 
   render () {

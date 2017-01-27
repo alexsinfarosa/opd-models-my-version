@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
+
 
 import PestSelector from './PestSelector'
 import StateSelector from './StateSelector'
@@ -18,7 +20,8 @@ class SelectionPanel extends Component {
           <br />
           <AccumulationEndDate />
           <br />
-          <a className='button is-primary is-outlined'>Calculate</a>
+          <Link className='button is-primary is-outlined' to='/results'>Calculate</Link>
+          {/* <a className='button is-primary is-outlined'>Calculate</a> */}
         </div>
       </div>
     )

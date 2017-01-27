@@ -11,7 +11,7 @@ export default class TheMap extends Component {
     // console.log(`Lat: ${center.lat}, Lon: ${center.lng}, Zoom: ${zoom}`)
   }
 
-  createMapOptions(maps) {
+  defineMapOptions(maps) {
     return {
       zoomControlOptions: {
         position: maps.ControlPosition.RIGHT_BUTTOM,
@@ -48,7 +48,7 @@ export default class TheMap extends Component {
           onChange={this.onChange}
           center={[selected.state.lat, selected.state.lon]}
           zoom={selected.state.zoom}
-          options={this.createMapOptions}>
+          options={this.defineMapOptions}>
 
           {MarkerList}
         </GoogleMapReact>

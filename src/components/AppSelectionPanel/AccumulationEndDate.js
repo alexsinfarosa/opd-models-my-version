@@ -7,12 +7,12 @@ import { inject, observer } from 'mobx-react';
 @inject('store') @observer
 class AccumulationEndDate extends Component {
   // Check if the day in state is selected
-  @action isDaySelected(day) {
-    return DateUtils.isSameDay(day, this.props.store.selected.day);
+  @action isDaySelected = (endDate) => {
+    return DateUtils.isSameDay(endDate, this.props.store.selected.endDate);
   }
-  @action handleDayClick(e, day) {
-    // this.setState({ selectedDay: day });
-    this.props.store.selected.day = day
+  @action handleDayClick = (e, endDate) => {
+    // this.setState({ selectedDay: endDate });
+    this.props.store.selected.endDate = endDate
   }
 
   render() {
@@ -21,11 +21,11 @@ class AccumulationEndDate extends Component {
       <div>
         <label className="label">Accumulation End Date:</label>
         <DayPicker
-          onDayClick={ this.handleDayClick.bind(this) }
-          selectedDays={ this.isDaySelected.bind(this) }
+          onDayClick={ this.handleDayClick }
+          selectedDays={ this.isDaySelected }
         />
         <p>
-          The selected day is <strong className="primary-color">{ selected.day.toLocaleDateString() }</strong>
+          The selected <strong>Date</strong> is <strong className="primary-color">{ selected.endDate.toLocaleDateString() }</strong>
         </p>
       </div>
     )

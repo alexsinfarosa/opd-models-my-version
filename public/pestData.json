@@ -1,16 +1,16 @@
-[
-  {
-    "pestName": "Pissodes strobi",
+{
+  "pest1": {
+    "formalName": "Pissodes strobi",
     "informalName": "White Pine Weevil",
     "biofixPhenology": "First Trap Catch",
     "baseTemp": 50,
     "preBiofix": [
       {
         "stage": "Overwintering adults become active",
+        "status": "Adults active",
         "ddlo": 7,
         "ddhi": 58,
         "phenologicalMarkers": "Silver maple blooming",
-        "status": "Adults active",
         "scouting": "Scout for feeding wounds on leaders, sap dripping",
         "management": "Begin trapping. Pesticide applications when day temperatures reach 50F",
         "biologicalControl": ""
@@ -27,8 +27,9 @@
       }
     ]
   },
-  {
-    "pestName": "Oligonychus Ununguis",
+
+  "pest2": {
+    "formalName": "Oligonychus Ununguis",
     "informalName": "Spruce Spider Mite",
     "biofixPhenology": "First Trap Catch",
     "baseTemp": 50,
@@ -65,8 +66,9 @@
       }
     ]
   },
-  {
-    "pestName": "Monarthropalpus flavus",
+
+  "pest3": {
+    "formalName": "Monarthropalpus flavus",
     "informalName": "Boxwood Leaf Miner",
     "biofixPhenology": "First Trap Catch",
     "baseTemp": 50,
@@ -103,4 +105,4 @@
       }
     ]
   }
-]
+}

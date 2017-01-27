@@ -7,7 +7,34 @@ class store {
   @observable filteredStations = []
 
   @observable selected = {
-    pest: '',
+    pest: {
+      "formalName": "",
+      "informalName": "",
+      "biofixPhenology": "",
+      "baseTemp": 0,
+      "preBiofix": [
+        {
+          "stage": "",
+          "status": "",
+          "ddlo": 0,
+          "ddhi": 0,
+          "phenologicalMarkers": "",
+          "scouting": "",
+          "management": "",
+          "biologicalControl": ""
+        },
+        {
+          "stage": "",
+          "ddlo": 0,
+          "ddhi": 0,
+          "phenologicalMarkers": "",
+          "status": "",
+          "scouting": "",
+          "management": "",
+          "biologicalControl": ""
+        }
+      ]
+    },
     state: {
       postalCode: '',
       lat: 42.9543,
@@ -15,10 +42,17 @@ class store {
       zoom: 6,
       name: '',
     },
-    station: '',
-    day: new Date(),
+    station: {
+      elev: '',
+      id: '',
+      lat: 42.9543,
+      lon: -75.5262,
+      name: '',
+      network: '',
+      state: ''
+    },
     startDate: '',
-    endDate: ''
+    endDate: new Date()
   }
 
   @action addIconsToStations = () => {
