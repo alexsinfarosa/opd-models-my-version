@@ -17,8 +17,8 @@
       },
       {
         "stage": "Larvae mature",
-        "ddlo": 0,
-        "ddhi": 400,
+        "ddlo": 59,
+        "ddhi": 100,
         "phenologicalMarkers": "Before  mockorange or mountain laurel bloom",
         "status": "Larvae maturing",
         "scouting": "Drooping leaders - 'shepherd's crook'",
@@ -36,7 +36,7 @@
     "preBiofix": [
       {
         "stage": "egg",
-        "ddlo": 7,
+        "ddlo": 101,
         "ddhi": 121,
         "phenologicalMarkers": "Pussy willow blooming",
         "status": "Overwintering eggs hatch",
@@ -46,7 +46,7 @@
       },
       {
         "stage": "nymph/adult",
-        "ddlo": 192,
+        "ddlo": 122,
         "ddhi": 363,
         "phenologicalMarkers": "Redbud blooming",
         "status": "Nymphs and adults active",
@@ -56,7 +56,7 @@
       },
       {
         "stage": "nymph/adult",
-        "ddlo": 2375,
+        "ddlo": 364,
         "ddhi": 2806,
         "phenologicalMarkers": "Witch hazel blooming",
         "status": "Nymphs and adults active",
@@ -85,7 +85,7 @@
       },
       {
         "stage": "eggs",
-        "ddlo": 350,
+        "ddlo": 661,
         "ddhi": 750,
         "phenologicalMarkers": "Shoot elongation of boxwood",
         "status": "",
@@ -95,7 +95,7 @@
       },
       {
         "stage": "larvae",
-        "ddlo": 1000,
+        "ddlo": 751,
         "ddhi": 2400,
         "phenologicalMarkers": "Leaf maturation of boxwood",
         "status": "Larvae creating new mines",

@@ -3,7 +3,7 @@ import { action } from 'mobx';
 import { inject, observer } from 'mobx-react';
 
 @inject('store') @observer
-class PestSelector extends Component {
+export default class PestSelector extends Component {
 
   @action setPest = (e) => {
     const pestData = this.props.store.pestData
@@ -11,6 +11,7 @@ class PestSelector extends Component {
       .keys(pestData)
       .filter(pest => pestData[pest].informalName === e.target.value)[0]
       this.props.store.selected.pest = pestData[selectedPest]
+      
   }
 
   render () {
@@ -37,5 +38,3 @@ class PestSelector extends Component {
     )
   }
 }
-
-export default PestSelector

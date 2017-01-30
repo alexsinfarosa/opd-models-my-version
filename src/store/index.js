@@ -5,36 +5,12 @@ class store {
   @observable pestData = pestData
   @observable stations = []
   @observable filteredStations = []
+  @observable ACISData = {}
+  @observable dd = []
+  @observable accdd = []
 
   @observable selected = {
-    pest: {
-      "formalName": "",
-      "informalName": "",
-      "biofixPhenology": "",
-      "baseTemp": 0,
-      "preBiofix": [
-        {
-          "stage": "",
-          "status": "",
-          "ddlo": 0,
-          "ddhi": 0,
-          "phenologicalMarkers": "",
-          "scouting": "",
-          "management": "",
-          "biologicalControl": ""
-        },
-        {
-          "stage": "",
-          "ddlo": 0,
-          "ddhi": 0,
-          "phenologicalMarkers": "",
-          "status": "",
-          "scouting": "",
-          "management": "",
-          "biologicalControl": ""
-        }
-      ]
-    },
+    pest: {},
     state: {
       postalCode: '',
       lat: 42.9543,
@@ -45,8 +21,8 @@ class store {
     station: {
       elev: '',
       id: '',
-      lat: 42.9543,
-      lon: -75.5262,
+      lat: null,
+      lon: null,
       name: '',
       network: '',
       state: ''
@@ -81,7 +57,6 @@ class store {
       }
     })
   this.filteredStations = tempArr
-  // console.log(this.filteredStations[0])
 }
 
   @observable states = [

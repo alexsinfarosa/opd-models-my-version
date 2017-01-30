@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import DayPicker, { DateUtils } from 'react-day-picker';
-import './AccumulationEndDate.css'
+import DayPicker from 'react-day-picker';
+import './DateSelector.css'
 import { action } from 'mobx';
 import { inject, observer } from 'mobx-react';
 
 @inject('store') @observer
-class AccumulationEndDate extends Component {
-  // Check if the day in state is selected
-  @action isDaySelected = (endDate) => {
-    return DateUtils.isSameDay(endDate, this.props.store.selected.endDate);
-  }
+export default class DateSelector extends Component {
+
   @action handleDayClick = (e, endDate) => {
-    // this.setState({ selectedDay: endDate });
     this.props.store.selected.endDate = endDate
+    const startDate = `01/01/${endDate.getFullYear()}`
+    this.props.store.selected.startDate = startDate
   }
 
   render() {
@@ -25,11 +23,12 @@ class AccumulationEndDate extends Component {
           selectedDays={ this.isDaySelected }
         />
         <p>
-          The selected <strong>Date</strong> is <strong className="primary-color">{ selected.endDate.toLocaleDateString() }</strong>
+          The selected date is
+          <strong className="primary-color">
+            { selected.endDate.toLocaleDateString()}
+          </strong>
         </p>
       </div>
     )
   }
 }
-
-export default AccumulationEndDate

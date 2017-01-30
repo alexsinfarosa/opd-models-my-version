@@ -5,14 +5,15 @@ import { action, computed } from 'mobx';
 @inject('store') @observer
 export default class StationSelector extends Component {
 
+  @action setStation = (e) => {
+    const { selected, stations } = this.props.store
+    selected.station = stations.filter(station =>
+      station.state === selected.state.postalCode && station.name === e.target.value)[0]
+  }
+
   @computed get stationList () {
     const { stations, selected } = this.props.store
     return stations.filter(station => station.state === selected.state.postalCode)
-  }
-
-  @action setStation = (e) => {
-    const { selected, stations } = this.props.store
-    selected.station = stations.filter(station => station.state === selected.state.postalCode)[0]
   }
 
   render () {

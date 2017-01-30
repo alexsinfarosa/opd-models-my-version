@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import { action } from 'mobx';
+import { action, when } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import axios from 'axios'
 
@@ -13,20 +13,23 @@ export default class App extends Component {
   constructor(props) {
     super(props)
 
-    this.fetchStations()
+    when(
+           // once...
+           () => this.props.store.stations.length === 0,
+           // ... then
+           () => this.fetchStations()
+       )
   }
 
   @action fetchStations = () => {
     axios.get('http://newa.nrcc.cornell.edu/newaUtil/stateStationList/all')
     .then(res => {
       const stations = res.data.stations
-      console.log(stations[0])
       this.props.store.stations = stations
-      return
+      // console.log(stations[0])
     })
     .catch(err => {
       console.log(err)
-      // console.log("Request Error: "+(err.response.data || err.response.statusText))
       this.props.store.stations = []
     })}
 

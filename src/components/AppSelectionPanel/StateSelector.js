@@ -10,6 +10,7 @@ class StateSelector extends Component {
     const selectedState = states.filter(state => state.name === e.target.value)[0]
     this.props.store.selected.state = selectedState
     this.props.store.addIconsToStations()
+    this.context.router.transitionTo('/map')
   }
 
   render () {
@@ -24,15 +25,19 @@ class StateSelector extends Component {
               onChange={this.setState}
             >
               <option>Select State</option>
-              {states.map((state, i) =>
-                <option key={i}>{state.name}</option>
-              )}
+              {states.map(state =>
+                <option key={state.name}>{state.name}</option>)
+              }
             </select>
           </span>
         </div>
       </div>
     )
   }
+}
+
+StateSelector.wrappedComponent.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default StateSelector
