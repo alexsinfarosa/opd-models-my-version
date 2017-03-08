@@ -48,7 +48,7 @@ class SelectionPanel extends Component {
 
     // POST request
     axios
-      .post("https://data.test.rcc-acis.org/StnData", params)
+      .post("http://data.test.rcc-acis.org/StnData", params)
       .then(res => {
         if (!res.data.hasOwnProperty("error")) {
           this.props.store.app.updateACISData(res.data.data);
@@ -90,7 +90,7 @@ class SelectionPanel extends Component {
     // SISTER ---------------------------------------------------------------------------------
     axios
       .get(
-        `https://newa.nrcc.cornell.edu/newaUtil/stationSisterInfo/${station.id}/${station.network}`
+        `http://newa.nrcc.cornell.edu/newaUtil/stationSisterInfo/${station.id}/${station.network}`
       )
       // Get id and network of sister station
       .then(res => {
@@ -109,7 +109,7 @@ class SelectionPanel extends Component {
           `First POST request: sid: ${params.sid}, sdate: ${params.sdate}, edate: ${params.edate}, elems: ${params.elems}`
         );
         axios
-          .post("https://data.test.rcc-acis.org/StnData", params)
+          .post("http://data.test.rcc-acis.org/StnData", params)
           .then(res => {
             if (!res.data.hasOwnProperty("error")) {
               const sisterFlat = flattenArray(res.data.data);
@@ -190,7 +190,7 @@ class SelectionPanel extends Component {
             if (sisterData) {
               axios
                 .get(
-                  `https://newatest.nrcc.cornell.edu/newaUtil/getFcstData/${station.id}/${station.network}/temp/${sDate}/${eDate}`
+                  `http://newatest.nrcc.cornell.edu/newaUtil/getFcstData/${station.id}/${station.network}/temp/${sDate}/${eDate}`
                 )
                 .then(res => {
                   if (!res.data.hasOwnProperty("error")) {

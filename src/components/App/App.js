@@ -41,7 +41,7 @@ class AppComponent extends Component {
 
   @action fetchStations = () => {
     axios
-      .get("https://newa.nrcc.cornell.edu/newaUtil/stateStationList/all")
+      .get("http://newa.nrcc.cornell.edu/newaUtil/stateStationList/all")
       .then(res => {
         const stations = res.data.stations;
         this.props.store.app.stations = stations;
