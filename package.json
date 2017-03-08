@@ -1,5 +1,6 @@
 {
   "name": "react-mobx-rocket",
+  "homepage": "http://alexsinfarosa.github.io/opd-models",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -12,6 +13,7 @@
     "bulma": "^0.3.1",
     "console.table": "^0.8.0",
     "date-fns": "^1.27.2",
+    "gh-pages": "^0.12.0",
     "google-map-react": "^0.22.3",
     "leaflet": "^1.0.3",
     "lodash": "^4.17.4",
@@ -36,7 +38,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "deploy": "surge ./build react-mobx-rocket.surge.sh",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "bnd": "npm run build && npm run deploy",
     "deploy-storybook": "surge ./storybook-static react-mobx-rocket-storybook.surge.sh",
     "bnd-storybook": "npm run build-storybook && npm run deploy-storybook"

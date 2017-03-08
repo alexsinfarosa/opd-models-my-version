@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
-import { action, when } from 'mobx';
-import axios from 'axios';
-import views from 'config/views';
-import { Link } from 'mobx-router';
-import { MobxRouter } from 'mobx-router';
+import React, { Component } from "react";
+import { inject, observer } from "mobx-react";
+import { action, when } from "mobx";
+import axios from "axios";
+import views from "config/views";
+import { Link } from "mobx-router";
+import { MobxRouter } from "mobx-router";
 
 // style
-import './App.css';
+import "./App.css";
 
 // components
-import AppHeader from '../AppHeader/AppHeader';
-import SelectionPanel from '../SelectionPanel/SelectionPanel';
-import Test from '../../components/SelectionPanel/Test'
+import AppHeader from "../AppHeader/AppHeader";
+import SelectionPanel from "../SelectionPanel/SelectionPanel";
+import Test from "../../components/SelectionPanel/Test";
 
 // devTools
-import DevTools from 'mobx-react-devtools';
+// import DevTools from 'mobx-react-devtools';
 
-@inject('store')
+@inject("store")
 @observer
 class AppComponent extends Component {
   constructor(props) {
@@ -32,20 +32,20 @@ class AppComponent extends Component {
   }
 
   getLocalStorage = () => {
-    this.props.store.app.state = JSON.parse(localStorage.getItem('state'));
-    this.props.store.app.station = JSON.parse(localStorage.getItem('station'));
-    this.props.store.app.pest = JSON.parse(localStorage.getItem('pest')); // TESTING...
+    this.props.store.app.state = JSON.parse(localStorage.getItem("state"));
+    this.props.store.app.station = JSON.parse(localStorage.getItem("station"));
+    this.props.store.app.pest = JSON.parse(localStorage.getItem("pest")); // TESTING...
     this.props.store.app.updateFilteredStations();
     this.props.store.router.goTo(views.map);
   };
 
   @action fetchStations = () => {
     axios
-      .get('http://newa.nrcc.cornell.edu/newaUtil/stateStationList/all')
+      .get("http://newa.nrcc.cornell.edu/newaUtil/stateStationList/all")
       .then(res => {
         const stations = res.data.stations;
         this.props.store.app.stations = stations;
-        if (localStorage.getItem('state' && 'station')) {
+        if (localStorage.getItem("state" && "station")) {
           this.getLocalStorage();
         }
       })
@@ -61,7 +61,7 @@ class AppComponent extends Component {
     // const {store:{router}} = this.props;
     return (
       <section className="hero is-fullheight">
-        <DevTools />
+        {/* <DevTools /> */}
         <div className="hero-body">
           <div className="container">
 
@@ -89,17 +89,17 @@ class AppComponent extends Component {
                   {/* NAVIGATION */}
                   <div className="tabs is-boxed">
                     <ul>
-                      <li className={path === '/map' ? 'is-active' : null}>
+                      <li className={path === "/map" ? "is-active" : null}>
                         <Link view={views.map} store={store}>
                           <span>Map</span>
                         </Link>
                       </li>
-                      <li className={path === '/results' ? 'is-active' : null}>
+                      <li className={path === "/results" ? "is-active" : null}>
                         <Link view={views.results} store={store}>
                           <span>Results</span>
                         </Link>
                       </li>
-                      <li className={path === '/moreinfo' ? 'is-active' : null}>
+                      <li className={path === "/moreinfo" ? "is-active" : null}>
                         <Link view={views.moreinfo} store={store}>
                           <span>More Info</span>
                         </Link>
